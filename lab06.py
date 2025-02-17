@@ -230,8 +230,24 @@ if not input_invalid:
 
     # Call Recursive function
     print("    |", end="    ")
-    num_dream_lvls = input("How many dream levels do you want to go down?")
-    if num_dream_lvls != 0:
+
+    input_invalid = True
+    attempts = 0
+
+    while input_invalid and attempts < 3:
+        attempts += 1
+        num_dream_lvls = input("How many dream levels do you want to go down? (0-3)")
+        if num_dream_lvls.isnumeric():
+            num_dream_lvls = int(num_dream_lvls)
+            if num_dream_lvls in range(0,4):
+                input_invalid = False
+            else:
+                print("Your input was not valid. Please enter a number between 0 and 3.")
+        else:
+            print("Your input was not valid. Please enter a number between 0 and 3.")
+
+
+    if num_dream_lvls != 0 and input_invalid is False:
         health_points -= 1
         crazy_level = functions_lab06.inception_dream(num_dream_lvls)
         combat_strength += crazy_level
