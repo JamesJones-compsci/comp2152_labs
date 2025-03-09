@@ -40,7 +40,8 @@ while not m_input_valid and i in range(5):
     # Lab 9: Question 1
     try:
         m_combat_strength = int(input("Enter the monster's combat Strength (1-6): "))
-    except ValueError:
+    except ValueError as e:
+        print(e.args)
         print("Invalid input. Monster needs to enter integer numbers for Combat Strength.")
         i += 1
         continue
@@ -74,8 +75,10 @@ m_health_points = random.choice(big_dice_options)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
 # Lab 9: Question 2
-health_points = function.monster_attacks("Somestring1", "Somestring2")
-
+try:
+    health_points = function.monster_attacks("Somestring1", "Somestring2")
+except TypeError:
+    print("A TypeError has occurred")
 
 # Loop while the monster and the player are alive. Call fight sequence functions
 while m_health_points > 0 and health_points > 0:
