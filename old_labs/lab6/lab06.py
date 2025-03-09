@@ -29,7 +29,7 @@ with open("dontwant.txt", "a") as f:
 import random
 
 # Put all the functions into another file and import them
-import functions_lab06
+from old_labs.lab6 import functions_lab06
 
 # Game Flow
 # Define two Dice
