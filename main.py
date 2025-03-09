@@ -4,7 +4,6 @@ import random
 # Put all the functions into another file and import them
 import function
 
-
 # Game Flow
 # Define two Dice
 small_dice_options = list(range(1, 7))  # Max combat strength is 6
@@ -17,17 +16,17 @@ input_valid = False
 # Loop to get valid input for Hero Combat Strength
 i = 0
 while not input_valid and i in range(5):
-    combat_strength = input("Enter your combat Strength (1-6): ")
+    # Lab 9: Question 1
+    try:
+        combat_strength = int(input("Enter your combat Strength (1-6): "))
+    except ValueError:
+        print("Invalid input. Player needs to enter integer numbers for Combat Strength.")
+        i += 1
+        continue
 
-    # Validate input: Check if the string inputted is numeric
-    if not combat_strength.isnumeric():
-        # If one of the inputs are invalid, print error message and halt
-        print("One or more invalid inputs. Player needs to enter integer numbers for Combat Strength")
-        i = i + 1
-
-    # Note: Now safe to cast combat_strength to integer
-    # Validate input: Check if the string inputted
-    elif int(combat_strength) not in range(1, 7):
+    # Note: combat_strength was safely converted to integer
+    # Validate input: Check if the string inputted is between 1 and 6
+    if combat_strength not in range(1, 7):
         print("Enter a valid integer between 1 and 6 only")
         i = i + 1
 
@@ -35,19 +34,20 @@ while not input_valid and i in range(5):
         input_valid = True
 
 m_input_valid = False
-
+i = 0
 while not m_input_valid and i in range(5):
-    m_combat_strength = input("Enter the monster's combat Strength (1-6): ")
 
-    # Validate input: Check if the string inputted is numeric
-    if not m_combat_strength.isnumeric():
-        # If one of the inputs are invalid, print error message and halt
-        print("One or more invalid inputs. Monster needs to enter integer numbers for Combat Strength")
-        i = i + 1
+    # Lab 9: Question 1
+    try:
+        m_combat_strength = int(input("Enter the monster's combat Strength (1-6): "))
+    except ValueError:
+        print("Invalid input. Monster needs to enter integer numbers for Combat Strength.")
+        i += 1
+        continue
 
-    # Note: Now safe to cast combat_strength to integer
-    # Validate input: Check if the string inputted
-    elif int(m_combat_strength) not in range(1, 7):
+    # Note: m_combat_strength was safely converted to integer
+    # Validate input: Check if the string inputted is between 1 and 6
+    if int(m_combat_strength) not in range(1, 7):
         print("Enter a valid integer between 1 and 6 only")
         i = i + 1
     else:
@@ -72,6 +72,10 @@ print("Player rolled " + str(m_combat_strength) + " combat strength for the mons
 input("Roll the dice for the monster's health points (Press enter)")
 m_health_points = random.choice(big_dice_options)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
+
+# Lab 9: Question 2
+health_points = function.monster_attacks("Somestring1", "Somestring2")
+
 
 # Loop while the monster and the player are alive. Call fight sequence functions
 while m_health_points > 0 and health_points > 0:
