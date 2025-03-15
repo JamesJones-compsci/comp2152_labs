@@ -79,6 +79,7 @@ def monster_attacks(m_combat_strength, health_points):
     return health_points
 
 # Lab 10 - Create functions to automate our query execution and fetching
+
 # Prepare and execute the query
 def query_executor(cursor, query_name):
     print("---")

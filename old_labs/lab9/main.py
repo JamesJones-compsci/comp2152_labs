@@ -2,7 +2,7 @@
 import random
 
 # Put all the functions into another file and import them
-import function
+from old_labs.lab9 import function
 
 # Game Flow
 # Define two Dice
