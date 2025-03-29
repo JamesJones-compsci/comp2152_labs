@@ -1,4 +1,4 @@
 .idea
-sqlite.db
+old_labs/lab10b/sqlite.db
 *.sqlite
 *.sqlite3

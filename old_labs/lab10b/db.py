@@ -1,5 +1,5 @@
 import sqlite3
-import function
+from old_labs.lab10b import function
 
 db_connection = sqlite3.connect("sqlite.db")
 print(db_connection)
